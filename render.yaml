@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: heart-predictor-api
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt || echo 'Fallback mode enabled'"
+    startCommand: "./start.sh"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        fromService: web
